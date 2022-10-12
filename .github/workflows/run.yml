@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ master ]
   schedule:
-    - cron: '30 22 * * *'
+    - cron: '30 19 * * *'
 
 jobs:
   build:
@@ -21,9 +21,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set time zone
-      run: |
-        sudo timedatectl set-timezone 'Asia/Shanghai'
     - name: Test
       run: |
         python3 main.py
@@ -37,5 +34,3 @@ jobs:
         TGAdminId: ${{ secrets.TELEGRAM_ADMIN_ID }}
         GithubToken: ${{ secrets.VERY_IMPORTANT_TOKEN }}
         GithubName: ${{ secrets.VERY_IMPORTANT_NAME }}
-        Pserver: ${{ secrets.PSERVER }}
-        Puser: ${{ secrets.PUSER }}
